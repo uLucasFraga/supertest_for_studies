@@ -1,6 +1,6 @@
 # SUPERTEST-FOR-STUDIES
 
-![QA | CI](https://github.com/uLucasFraga/supertest_for_studies/workflows/CONTINUOUS%20INTEGRATIONS/badge.svg)[![ServeRest API](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/PauloGoncalvesBH/ServeRest/)
+![QA CI](https://github.com/uLucasFraga/supertest_for_studies/workflows/CONTINUOUS%20INTEGRATIONS/badge.svg)[![ServeRest API](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/PauloGoncalvesBH/ServeRest/)
 
 ---
 

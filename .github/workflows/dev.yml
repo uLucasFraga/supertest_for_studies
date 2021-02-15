@@ -1,11 +1,11 @@
-name: QA | CI
+name: QA CI
 
-on:
+on: [push]
   pull_request:
   workflow_dispatch:
 
 jobs:
-  standard-lint:
+  lint:
 
     runs-on: ubuntu-18.04
 
