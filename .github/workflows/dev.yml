@@ -39,8 +39,6 @@ jobs:
         node-version: ${{ matrix.node }}
     - name: Instalação das dependências do Node.js
       run: npm run simple_build
-    - name: Preparando testes de contrato
-      run: docker run -d -p 3000:3000 paulogoncalvesbh/serverest:latest
     - name: Testes de contrato
       run: npm run test:contracts
 
@@ -61,7 +59,5 @@ jobs:
         node-version: ${{ matrix.node }}
     - name: Instalação das dependências do Node.js
       run: npm run simple_build
-    - name: Preparando testes de integracao
-      run: docker run -d -p 3000:3000 paulogoncalvesbh/serverest:latest
     - name: Testes de integração
       run: npm run test:integrations
