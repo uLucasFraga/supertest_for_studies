@@ -20,7 +20,7 @@ jobs:
     - name: Instalação das dependências do Node.js
       run: npm run simple_build
     - name: Standard Lint
-      run: npm run lint
+      run: npm run lint:fix
 
   testes-de-contrato:
 
@@ -40,7 +40,7 @@ jobs:
     - name: Instalação das dependências do Node.js
       run: npm run simple_build
     - name: Testes de contrato
-      run: test:contracts
+      run: npm run test:contracts
 
   testes-de-integracao:
 
@@ -60,4 +60,4 @@ jobs:
     - name: Instalação das dependências do Node.js
       run: npm run simple_build
     - name: Testes de integração
-      run: test:integrations
+      run: npm run test:integrations

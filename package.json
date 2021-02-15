@@ -34,6 +34,7 @@
       "expect",
       "httpStatus",
       "Joi",
+      "faker",
       "DEFAULT_TIMEOUT"
     ]
   },
