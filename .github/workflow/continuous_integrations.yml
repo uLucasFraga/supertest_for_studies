@@ -1,0 +1,60 @@
+name: CONTINUOUS INTEGRATIONS
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Project checkout
+      uses: actions/checkout@v2
+    - name: Node.js Setup
+      uses: actions/setup-node@v2.1.4
+    - name: Instalação das dependências do Node.js
+      run: npm ci
+    - name: Standard Lint
+      run: npm run lint
+
+  testes-de-contrato:
+
+    runs-on: ubuntu-18.04
+
+    strategy:
+      matrix:
+        node: [10]
+
+    steps:
+    - name: Project checkout
+      uses: actions/checkout@v2
+    - name: Node.js v${{ matrix.node }} Setup
+      uses: actions/setup-node@v2.1.4
+      with:
+        node-version: ${{ matrix.node }}
+    - name: Instalação das dependências do Node.js
+      run: npm run simple_build
+    - name: Testes de contrato
+      run: test:contracts
+
+  testes-de-integração:
+
+    runs-on: ubuntu-18.04
+
+    strategy:
+      matrix:
+        node: [10]
+
+    steps:
+    - name: Project checkout
+      uses: actions/checkout@v2
+    - name: Node.js v${{ matrix.node }} Setup
+      uses: actions/setup-node@v2.1.4
+      with:
+        node-version: ${{ matrix.node }}
+    - name: Instalação das dependências do Node.js
+      run: npm run simple_build
+    - name: Testes de integração
+      run: test:integrations
