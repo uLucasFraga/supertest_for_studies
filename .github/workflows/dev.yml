@@ -42,7 +42,7 @@ jobs:
     - name: Testes de contrato
       run: test:contracts
 
-  testes-de-integração:
+  testes-de-integracao:
 
     runs-on: ubuntu-18.04
 
