@@ -1,0 +1,72 @@
+{
+  "name": "poc-supertest",
+  "version": "1.0.0",
+  "description": "Repositório com exemplos de teste automatizado para API utilizando os frameworks: supertest, mocha e chai",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha-parallel-tests **/*.spec.js",
+    "i:tests": "npm run clean && npm it",
+    "test:smoke": "mocha **/*.spec.js -- -g=@smoke",
+    "test:integrations": "mocha test/integration-tests/*/*.spec.js",
+    "test:integrations:login": "mocha test/integration-tests/login/*.spec.js",
+    "test:integrations:carrinhos": "mocha test/integration-tests/carrinhos/*.spec.js",
+    "test:integrations:produtos": "mocha test/integration-tests/produtos/*.spec.js",
+    "test:integrations:usuarios": "mocha test/integration-tests/usuarios/*.spec.js",
+    "test:contracts": "mocha test/contract-tests/*/*.spec.js",
+    "test:contracts:carrinhos": "mocha test/contract-tests/carrinhos/*.spec.js",
+    "test:contracts:produtos": "mocha test/contract-tests/produtos/*.spec.js",
+    "test:contracts:usuarios": "mocha test/contract-tests/usuarios/*.spec.js",
+    "test:integrations:report": "MOCHA_FILE=./mochawesome-report/integration-tests.xml mocha-parallel-tests test/integration-tests/*/*.spec.js --reporter mocha-junit-reporter",
+    "test:contracts:report": "MOCHA_FILE=./mochawesome-report/contracts-tests.xml mocha-parallel-tests test/contract-tests/*/*.spec.js --reporter mocha-junit-reporter",
+    "clean": "rm -rf node_modules && rm -rf package-lock.json && rm -rf reports && rm -rf mochawesome-report",
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "simple_build": "npm run clean && npm i",
+    "start:server": "npx serverest",
+    "stop:server": "kill -9 $(lsof -ti tcp:3000)"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "require",
+      "request",
+      "expect",
+      "httpStatus",
+      "Joi",
+      "DEFAULT_TIMEOUT"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "gitlab@gitlab.globoi.com:sales/qa/supertest.git"
+  },
+  "keywords": [
+    "supertest",
+    "testing"
+  ],
+  "homepage": "https://gitlab.globoi.com/sales/qa/supertest#readme",
+  "dependencies": {
+    "@hapi/joi": "~17.1.1",
+    "chai": "~4.2.0",
+    "chai-as-promised": "~7.1.1",
+    "dotenv": "~8.2.0",
+    "faker": "^4.1.0",
+    "joi-assert": "~0.0.3",
+    "mochawesome": "~6.1.1",
+    "supertest": "~4.0.2"
+  },
+  "devDependencies": {
+    "http-status-codes": "~1.4.0",
+    "mocha": "~7.2.0",
+    "mocha-junit-reporter": "~1.23.3",
+    "mocha-parallel-tests": "~2.3.0",
+    "standard": "~14.3.4",
+    "uuid": "~8.1.0"
+  },
+  "author": "Lucas Fraga",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.globoi.com/sales/qa/supertest/issues"
+  }
+}
