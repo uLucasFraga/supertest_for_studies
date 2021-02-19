@@ -24,9 +24,6 @@ jobs:
   testes-de-contrato:
     runs-on: ubuntu-18.04
 
-    env:
-      APP_URL: ${{ secrets.APP_URL }}
-
     strategy:
       matrix:
         node: [10]
@@ -42,6 +39,8 @@ jobs:
         run: npm run simple_build
       - name: Testes de contrato
         run: npm run test:contracts
+        env:
+          APP_URL: ${{secrets.APP_URL}}
 
   testes-de-integracao:
     runs-on: ubuntu-18.04
@@ -57,12 +56,11 @@ jobs:
         uses: actions/setup-node@v2.1.4
         with:
           node-version: ${{ matrix.node }}
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
       - name: Instalação das dependências do Node.js
         run: npm run simple_build
       - name: Testes de integração
-        with:
-          email: ${{ secrets.EMAIL }}
-          password: ${{ secrets.PASSWORD }}
         run: npm run test:integrations
         env:
           APP_URL: ${{ secrets.APP_URL }}
