@@ -1,6 +1,10 @@
 const { assert } = require('chai')
 const commons = require('../../utils/commons/commons.js')
 
+const url = process.env.APP_URL
+const email = process.env.EMAIL
+const password = process.env.PASSWORD
+
 describe('[INTEGRAÇÃO] :: LOGIN - teste de integração', () => {
   it('Login com sucesso', async () => {
     const { body } = await request(url)
