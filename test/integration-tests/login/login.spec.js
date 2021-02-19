@@ -1,23 +1,9 @@
 const { assert } = require('chai')
 const commons = require('../../utils/commons/commons.js')
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-const url = process.env.APP_URL;
-const emailValid = process.env.EMAIL_VALID;
-const emailInvalid = process.env.EMAIL_INVALID;
-const passValid = process.env.PASSWORD_VALID;
-=======
 const url = process.env.APP_URL
 const email = process.env.EMAIL
 const password = process.env.PASSWORD
->>>>>>> Stashed changes
-=======
-const url = process.env.APP_URL
-const emailValid = process.env.EMAIL_VALID
-const emailInvalid = process.env.EMAIL_INVALID
-const passValid = process.env.PASSWORD_VALID
->>>>>>> 92526c063190699763dddcd45e0ac325198840ad
 
 describe('[INTEGRAÇÃO] :: LOGIN - teste de integração', () => {
   it('Login com sucesso', async () => {
