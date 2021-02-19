@@ -40,6 +40,7 @@ jobs:
       - name: Testes de contrato
         env:
           APP_URL: ${{secrets.APP_URL}}
+          CI: true
         run: npm run test:contracts
 
   testes-de-integracao:
@@ -61,7 +62,8 @@ jobs:
       - name: Instalação das dependências do Node.js
         run: npm run simple_build
       - name: Testes de integração
-        run: npm run test:integrations
-        env:
+      env:
           APP_URL: ${{ secrets.APP_URL }}
           CI: true
+        run: npm run test:integrations
+        
