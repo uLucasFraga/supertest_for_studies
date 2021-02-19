@@ -2,17 +2,16 @@ const { assert } = require('chai')
 const commons = require('../../utils/commons/commons.js')
 
 const url = process.env.APP_URL
-const emailValid = process.env.EMAIL_VALID
-const emailInvalid = process.env.EMAIL_INVALID
-const passValid = process.env.PASSWORD_VALID
+const email = process.env.EMAIL
+const password = process.env.PASSWORD
 
 describe('[INTEGRAÇÃO] :: LOGIN - teste de integração', () => {
   it('Login com sucesso', async () => {
     const { body } = await request(url)
       .post('/login')
       .send({
-        email: emailValid,
-        password: passValid
+        email: email,
+        password: password
       })
       .expect(httpStatus.OK)
 
@@ -26,19 +25,19 @@ describe('[INTEGRAÇÃO] :: LOGIN - teste de integração', () => {
     const { body } = await request(url)
       .post('/login')
       .send({
-        email: emailInvalid,
-        password: passValid
+        email: "login.invalido.com",
+        password: password
       })
       .expect(httpStatus.BAD_REQUEST)
 
     assert.deepEqual(body, { email: 'email deve ser um email válido' })
   })
 
-  it('Login com senha inválida', async () => {
+  it('Login com senha errada', async () => {
     const { body } = await request(url)
       .post('/login')
       .send({
-        email: emailValid,
+        email: email,
         password: 'senha_errada'
       })
       .expect(httpStatus.UNAUTHORIZED)
@@ -46,7 +45,7 @@ describe('[INTEGRAÇÃO] :: LOGIN - teste de integração', () => {
     assert.deepEqual(body, { message: 'Email e/ou senha inválidos' })
   })
 
-  it('Login com email e senha inválidos', async () => {
+  it('Login com email e senha errados', async () => {
     const { body } = await request(url)
       .post('/login')
       .send({
