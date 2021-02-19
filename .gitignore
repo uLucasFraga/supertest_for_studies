@@ -58,7 +58,10 @@ typings/
 
 # dotenv environment variables file
 .env
+<<<<<<< Updated upstream
 .env.*
+=======
+>>>>>>> Stashed changes
 !.env.example
 /public/packs
 /public/packs-test

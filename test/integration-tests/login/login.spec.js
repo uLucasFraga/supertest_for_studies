@@ -1,18 +1,29 @@
 const { assert } = require("chai");
 const commons = require("../../utils/commons/commons.js");
 
+<<<<<<< Updated upstream
 const url = process.env.APP_URL;
 const emailValid = process.env.EMAIL_VALID;
 const emailInvalid = process.env.EMAIL_INVALID;
 const passValid = process.env.PASSWORD_VALID;
+=======
+const url = process.env.APP_URL
+const email = process.env.EMAIL
+const password = process.env.PASSWORD
+>>>>>>> Stashed changes
 
 describe("[INTEGRAÇÃO] :: LOGIN - teste de integração", () => {
   it("Login com sucesso", async () => {
     const { body } = await request(url)
       .post("/login")
       .send({
+<<<<<<< Updated upstream
         email: emailValid,
         password: passValid,
+=======
+        email: email,
+        password: password
+>>>>>>> Stashed changes
       })
       .expect(httpStatus.OK);
 
@@ -26,27 +37,57 @@ describe("[INTEGRAÇÃO] :: LOGIN - teste de integração", () => {
     const { body } = await request(url)
       .post("/login")
       .send({
+<<<<<<< Updated upstream
         email: emailInvalid,
         password: passValid,
+=======
+        email: "login.invalido.com",
+        password: password
+>>>>>>> Stashed changes
       })
       .expect(httpStatus.BAD_REQUEST);
 
     assert.deepEqual(body, { email: "email deve ser um email válido" });
   });
 
+<<<<<<< Updated upstream
   it("Login com senha inválida", async () => {
+=======
+  it('Login com email errado', async () => {
+>>>>>>> Stashed changes
     const { body } = await request(url)
       .post("/login")
       .send({
+<<<<<<< Updated upstream
         email: emailValid,
         password: "senha_errada",
+=======
+        email: email,
+        password: 'senha_errada'
+>>>>>>> Stashed changes
       })
       .expect(httpStatus.UNAUTHORIZED);
 
     assert.deepEqual(body, { message: "Email e/ou senha inválidos" });
   });
 
+<<<<<<< Updated upstream
   it("Login com email e senha inválidos", async () => {
+=======
+  it('Login com senha errada', async () => {
+    const { body } = await request(url)
+      .post('/login')
+      .send({
+        email: email,
+        password: 'senha_errada'
+      })
+      .expect(httpStatus.UNAUTHORIZED)
+
+    assert.deepEqual(body, { message: 'Email e/ou senha inválidos' })
+  })
+
+  it('Login com email e senha errados', async () => {
+>>>>>>> Stashed changes
     const { body } = await request(url)
       .post("/login")
       .send({
