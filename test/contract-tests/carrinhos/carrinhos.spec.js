@@ -1,4 +1,3 @@
-const url = process.env.APP_URL
 const carrinhos = require('../../utils/schemas/carrinhos-schema')
 
 describe('[CONTRATO] :: CARRINHOS - teste de contrato', () => {
