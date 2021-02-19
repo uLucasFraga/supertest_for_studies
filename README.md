@@ -60,7 +60,7 @@ Repositório com exemplos de teste automatizado para API utilizando os framework
 
 ## Como Testar
 
-Antes de rodar os testes precisaremos:
+##### Para rodar os testes -localmente-:
 
 - Criar um arquivo `.env` na raiz do projeto e inserir valores válidos
 - Seguir o padrão pré estabelicido no arquivo `.env.example`
@@ -72,7 +72,7 @@ exemplo:
 APP_URL=url_valida
 TOKEN=token_valido
 EMAIL=email_valido
-PASSWORD=pass_valido
+PASSWORD=password_valido
 ```
 
 > Subir **servidor_rest** para realizar os testes
@@ -119,6 +119,16 @@ Por isso, podemos incluir diferentes **scprits** para utilizarmos em diferentes 
 > Para stopar/terminar o servidor_rest
 
 `npm run stop:server`
+
+##### Para rodar os testes em ambiente de -desenvolvimento-:
+
+> Para limpar e instalar as dependências do projeto
+
+`npm run simple_build`
+
+> Para rodar todos os testes em paralelo
+
+`npm test`
 
 ## Reporte
 
