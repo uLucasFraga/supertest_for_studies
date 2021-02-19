@@ -63,6 +63,6 @@ jobs:
         run: npm run test:integrations
         env:
           APP_URL: "https://serverest.dev"
-          email: ${{ secrets.EMAIL }}
-          password: ${{ secrets.PASSWORD }}
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
           CI: true
