@@ -40,7 +40,7 @@ jobs:
       - name: Testes de contrato
         run: npm run test:contracts
         env:
-          url: "https://serverest.dev"
+          APP_URL: "https://serverest.dev"
           CI: true
 
   testes-de-integracao:
@@ -62,7 +62,7 @@ jobs:
       - name: Testes de integração
         run: npm run test:integrations
         env:
-          url: "https://serverest.dev"
+          APP_URL: "https://serverest.dev"
           email: ${{ secrets.EMAIL }}
           password: ${{ secrets.PASSWORD }}
           CI: true
