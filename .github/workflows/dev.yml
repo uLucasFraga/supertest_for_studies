@@ -1,11 +1,3 @@
-<<<<<<< Updated upstream:.github/workflow/continuous_integrations.yml
-name: CONTINUOUS INTEGRATIONS
-
-on:
-  pull_request:
-  workflow_dispatch:
-
-=======
 name: QA CI
 "on":
   push:
@@ -15,22 +7,10 @@ name: QA CI
     branches:
       - main
   workflow_dispatch: null
->>>>>>> Stashed changes:.github/workflows/dev.yml
 jobs:
   lint:
     runs-on: ubuntu-18.04
     steps:
-<<<<<<< Updated upstream:.github/workflow/continuous_integrations.yml
-    - name: Project checkout
-      uses: actions/checkout@v2
-    - name: Node.js Setup
-      uses: actions/setup-node@v2.1.4
-    - name: Instalação das dependências do Node.js
-      run: npm ci
-    - name: Standard Lint
-      run: npm run lint
-
-=======
       - name: Project checkout
         uses: actions/checkout@v2
       - name: Node.js Setup
@@ -39,7 +19,6 @@ jobs:
         run: npm run simple_build
       - name: Standard Lint
         run: "npm run lint:fix"
->>>>>>> Stashed changes:.github/workflows/dev.yml
   testes-de-contrato:
     runs-on: ubuntu-18.04
     strategy:
@@ -47,21 +26,6 @@ jobs:
         node:
           - 10
     steps:
-<<<<<<< Updated upstream:.github/workflow/continuous_integrations.yml
-    - name: Project checkout
-      uses: actions/checkout@v2
-    - name: Node.js v${{ matrix.node }} Setup
-      uses: actions/setup-node@v2.1.4
-      with:
-        node-version: ${{ matrix.node }}
-    - name: Instalação das dependências do Node.js
-      run: npm run simple_build
-    - name: Testes de contrato
-      run: test:contracts
-
-  testes-de-integração:
-
-=======
       - name: Project checkout
         uses: actions/checkout@v2
       - name: "Node.js v${{ matrix.node }} Setup"
@@ -72,29 +36,15 @@ jobs:
         run: npm run simple_build
       - name: Testes de contrato
     env:
-      CI: true
       APP_URL: "${{ secrets.APP_URL }}"
     run: "npm run test:contracts"
   testes-de-integracao:
->>>>>>> Stashed changes:.github/workflows/dev.yml
     runs-on: ubuntu-18.04
     strategy:
       matrix:
         node:
           - 10
     steps:
-<<<<<<< Updated upstream:.github/workflow/continuous_integrations.yml
-    - name: Project checkout
-      uses: actions/checkout@v2
-    - name: Node.js v${{ matrix.node }} Setup
-      uses: actions/setup-node@v2.1.4
-      with:
-        node-version: ${{ matrix.node }}
-    - name: Instalação das dependências do Node.js
-      run: npm run simple_build
-    - name: Testes de integração
-      run: test:integrations
-=======
       - name: Project checkout
         uses: actions/checkout@v2
       - name: "Node.js v${{ matrix.node }} Setup"
@@ -105,9 +55,7 @@ jobs:
         run: npm run simple_build
       - name: Testes de integração
     env:
-      CI: true
       APP_URL: "${{ secrets.APP_URL }}"
       EMAIL: "${{ secrets.EMAIL }}"
       PASSWORD: "${{ secrets.PASSWORD }}"
     run: "npm run test:integrations"
->>>>>>> Stashed changes:.github/workflows/dev.yml

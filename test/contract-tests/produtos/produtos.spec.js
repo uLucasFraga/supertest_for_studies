@@ -4,7 +4,7 @@ const produtos = require('../../utils/schemas/produtos-schema')
 describe('[CONTRATO] :: PRODUTOS - teste de contrato', () => {
   it('/GET deve validar o contrato (schema) do endpoint de produtos', async () => {
     await request(url)
-      .get("/produtos")
+      .get('/produtos')
       .timeout({ response: DEFAULT_TIMEOUT, deadline: DEFAULT_TIMEOUT })
       .then((result) => {
         expect(result.statusCode).to.equal(httpStatus.OK)

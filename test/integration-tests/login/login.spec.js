@@ -1,6 +1,7 @@
-const { assert } = require("chai");
-const commons = require("../../utils/commons/commons.js");
+const { assert } = require('chai')
+const commons = require('../../utils/commons/commons.js')
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 const url = process.env.APP_URL;
 const emailValid = process.env.EMAIL_VALID;
@@ -11,69 +12,41 @@ const url = process.env.APP_URL
 const email = process.env.EMAIL
 const password = process.env.PASSWORD
 >>>>>>> Stashed changes
-
-describe("[INTEGRAÇÃO] :: LOGIN - teste de integração", () => {
-  it("Login com sucesso", async () => {
-    const { body } = await request(url)
-      .post("/login")
-      .send({
-<<<<<<< Updated upstream
-        email: emailValid,
-        password: passValid,
 =======
+const url = process.env.APP_URL
+const emailValid = process.env.EMAIL_VALID
+const emailInvalid = process.env.EMAIL_INVALID
+const passValid = process.env.PASSWORD_VALID
+>>>>>>> 92526c063190699763dddcd45e0ac325198840ad
+
+describe('[INTEGRAÇÃO] :: LOGIN - teste de integração', () => {
+  it('Login com sucesso', async () => {
+    const { body } = await request(url)
+      .post('/login')
+      .send({
         email: email,
         password: password
->>>>>>> Stashed changes
       })
-      .expect(httpStatus.OK);
+      .expect(httpStatus.OK)
 
     assert.deepEqual(body, {
-      message: "Login realizado com sucesso",
-      authorization: "Bearer " + body.authorization.split(" ")[1],
-    });
-  });
+      message: 'Login realizado com sucesso',
+      authorization: 'Bearer ' + body.authorization.split(' ')[1]
+    })
+  })
 
-  it("Login com email inválido", async () => {
+  it('Login com email inválido', async () => {
     const { body } = await request(url)
-      .post("/login")
+      .post('/login')
       .send({
-<<<<<<< Updated upstream
-        email: emailInvalid,
-        password: passValid,
-=======
         email: "login.invalido.com",
         password: password
->>>>>>> Stashed changes
       })
-      .expect(httpStatus.BAD_REQUEST);
+      .expect(httpStatus.BAD_REQUEST)
 
-    assert.deepEqual(body, { email: "email deve ser um email válido" });
-  });
+    assert.deepEqual(body, { email: 'email deve ser um email válido' })
+  })
 
-<<<<<<< Updated upstream
-  it("Login com senha inválida", async () => {
-=======
-  it('Login com email errado', async () => {
->>>>>>> Stashed changes
-    const { body } = await request(url)
-      .post("/login")
-      .send({
-<<<<<<< Updated upstream
-        email: emailValid,
-        password: "senha_errada",
-=======
-        email: email,
-        password: 'senha_errada'
->>>>>>> Stashed changes
-      })
-      .expect(httpStatus.UNAUTHORIZED);
-
-    assert.deepEqual(body, { message: "Email e/ou senha inválidos" });
-  });
-
-<<<<<<< Updated upstream
-  it("Login com email e senha inválidos", async () => {
-=======
   it('Login com senha errada', async () => {
     const { body } = await request(url)
       .post('/login')
@@ -87,62 +60,61 @@ describe("[INTEGRAÇÃO] :: LOGIN - teste de integração", () => {
   })
 
   it('Login com email e senha errados', async () => {
->>>>>>> Stashed changes
     const { body } = await request(url)
-      .post("/login")
+      .post('/login')
       .send({
-        email: "lucas@algo.com",
-        password: "lucas",
+        email: 'lucas@algo.com',
+        password: 'lucas'
       })
-      .expect(httpStatus.UNAUTHORIZED);
+      .expect(httpStatus.UNAUTHORIZED)
 
-    assert.deepEqual(body, { message: "Email e/ou senha inválidos" });
-  });
+    assert.deepEqual(body, { message: 'Email e/ou senha inválidos' })
+  })
 
-  it("Login sem preencher dados", async () => {
+  it('Login sem preencher dados', async () => {
     const { body } = await request(url)
-      .post("/login")
+      .post('/login')
       .send({
-        email: "",
-        password: "",
+        email: '',
+        password: ''
       })
-      .expect(httpStatus.BAD_REQUEST);
+      .expect(httpStatus.BAD_REQUEST)
 
     assert.deepEqual(body, {
-      email: "email não pode ficar em branco",
-      password: "password não pode ficar em branco",
-    });
-  });
+      email: 'email não pode ficar em branco',
+      password: 'password não pode ficar em branco'
+    })
+  })
 
-  it("Login com chave inválida", async () => {
+  it('Login com chave inválida', async () => {
     const { body } = await request(url)
-      .post("/login")
-      .send({ inexistente: "1" })
-      .expect(httpStatus.BAD_REQUEST);
+      .post('/login')
+      .send({ inexistente: '1' })
+      .expect(httpStatus.BAD_REQUEST)
 
     assert.deepEqual(body, {
-      email: "email é obrigatório",
-      password: "password é obrigatório",
-      inexistente: "inexistente não é permitido",
-    });
-  });
+      email: 'email é obrigatório',
+      password: 'password é obrigatório',
+      inexistente: 'inexistente não é permitido'
+    })
+  })
 
-  it("Login com sucesso com um novo usuário sendo cadastrado", async () => {
+  it('Login com sucesso com um novo usuário sendo cadastrado', async () => {
     const { email, password } = await commons.cadastrarUsuario({
       url,
-      administrador: "true",
-    });
+      administrador: 'true'
+    })
     const { body } = await request(url)
-      .post("/login")
+      .post('/login')
       .send({
         email,
-        password,
+        password
       })
-      .expect(httpStatus.OK);
+      .expect(httpStatus.OK)
 
     assert.deepEqual(body, {
-      message: "Login realizado com sucesso",
-      authorization: "Bearer " + body.authorization.split(" ")[1],
-    });
-  });
-});
+      message: 'Login realizado com sucesso',
+      authorization: 'Bearer ' + body.authorization.split(' ')[1]
+    })
+  })
+})

@@ -57,11 +57,8 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
-<<<<<<< Updated upstream
 .env.*
-=======
->>>>>>> Stashed changes
+!.env
 !.env.example
 /public/packs
 /public/packs-test
