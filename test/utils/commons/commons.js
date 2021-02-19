@@ -1,10 +1,10 @@
 async function cadastrarCarrinho ({
-  url,
+  APP_URL,
   idProduto,
   quantidade = 1,
   authorization
 }) {
-  const { body } = await request(url)
+  const { body } = await request(APP_URL)
     .post('/carrinhos')
     .set('authorization', authorization)
     .send({
@@ -24,14 +24,14 @@ async function cadastrarCarrinho ({
 }
 
 async function cadastrarProduto ({
-  url,
+  APP_URL,
   nome = faker.commerce.productName() + faker.random.number(),
   preco = faker.commerce.price(),
   descricao = faker.random.words(),
   quantidade = faker.random.number(),
   authorization
 } = {}) {
-  const { body } = await request(url)
+  const { body } = await request(APP_URL)
     .post('/produtos')
     .send({
       nome,
@@ -51,13 +51,13 @@ async function cadastrarProduto ({
 }
 
 async function cadastrarUsuario ({
-  url,
+  APP_URL,
   nome = faker.name.findName(),
   email = faker.internet.email(),
   password = faker.internet.password(),
   administrador = `${faker.random.boolean()}`
 } = {}) {
-  const { body } = await request(url)
+  const { body } = await request(APP_URL)
     .post('/usuarios')
     .send({
       nome,
@@ -85,8 +85,8 @@ function dadosProduto () {
   }
 }
 
-async function login (url, email, password) {
-  const { body } = await request(url)
+async function login (APP_URL, email, password) {
+  const { body } = await request(APP_URL)
     .post('/login')
     .send({
       email,

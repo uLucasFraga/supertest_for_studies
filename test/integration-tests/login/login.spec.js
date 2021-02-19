@@ -7,6 +7,9 @@ const PASSWORD = process.env.PASSWORD;
 
 describe("[INTEGRAÇÃO] :: LOGIN - teste de integração", () => {
   it("Login com sucesso", async () => {
+    console.log(APP_URL);
+    console.log(EMAIL);
+    console.log(PASSWORD);
     const { body } = await request(APP_URL)
       .post("/login")
       .send({
@@ -86,8 +89,8 @@ describe("[INTEGRAÇÃO] :: LOGIN - teste de integração", () => {
   });
 
   it("Login com sucesso com um novo usuário sendo cadastrado", async () => {
-    const { email, password } = await commons.cadastrarUsuario({
-      url,
+    const { EMAIL, PASSWORD } = await commons.cadastrarUsuario({
+      APP_URL,
       administrador: "true",
     });
     const { body } = await request(APP_URL)
