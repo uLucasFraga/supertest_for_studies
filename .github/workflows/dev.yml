@@ -43,7 +43,9 @@ jobs:
     - name: Instalação das dependências do Node.js
       run: npm run simple_build
     - name: Testes de contrato
-      run: npm run test:contracts
+    env:
+      APP_URL: ${{ secrets.APP_URL }}
+    run: npm run test:contracts
 
   testes-de-integracao:
 
