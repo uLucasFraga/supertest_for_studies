@@ -26,6 +26,9 @@ jobs:
 
     runs-on: ubuntu-18.04
 
+    env:
+      APP_URL: ${{ secrets.APP_URL }}
+
     strategy:
       matrix:
         node: [10]
