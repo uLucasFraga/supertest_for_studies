@@ -1,13 +1,13 @@
 const { assert } = require('chai')
 
-const url = process.env.APP_URL
+const APP_URL = process.env.APP_URL
 const nameFaker = faker.name.firstName()
 const emailFaker = faker.internet.email()
 const passFaker = faker.internet.password(5, 10)
 
 describe('[INTEGRAÇÃO] :: USUÁRIOS - teste de integração', () => {
   it('Cadastrar um novo usuário com sucesso', async () => {
-    const { body } = await request(url)
+    const { body } = await request(APP_URL)
       .post('/usuarios')
       .send({
         nome: nameFaker,
@@ -24,7 +24,7 @@ describe('[INTEGRAÇÃO] :: USUÁRIOS - teste de integração', () => {
   })
 
   it('Cadastrar um novo usuário com email já usado', async () => {
-    const { body } = await request(url)
+    const { body } = await request(APP_URL)
       .post('/usuarios')
       .send({
         nome: nameFaker,
@@ -38,7 +38,7 @@ describe('[INTEGRAÇÃO] :: USUÁRIOS - teste de integração', () => {
   })
 
   it('Cadastrar um novo usuário com email inválido', async () => {
-    const { body } = await request(url)
+    const { body } = await request(APP_URL)
       .post('/usuarios')
       .send({
         nome: nameFaker,
@@ -52,7 +52,7 @@ describe('[INTEGRAÇÃO] :: USUÁRIOS - teste de integração', () => {
   })
 
   it('Cadastrar um novo usuário sem nome, email, senha e o admin com boolean fora das aspas', async () => {
-    const { body } = await request(url)
+    const { body } = await request(APP_URL)
       .post('/usuarios')
       .send({
         administrador: false
