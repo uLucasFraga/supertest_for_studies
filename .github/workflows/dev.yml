@@ -1,61 +1,63 @@
 name: QA CI
-"on":
+
+on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
-  workflow_dispatch: null
+    branches: [ main ]
+  workflow_dispatch:
+
 jobs:
   lint:
+
     runs-on: ubuntu-18.04
+
     steps:
-      - name: Project checkout
-        uses: actions/checkout@v2
-      - name: Node.js Setup
-        uses: actions/setup-node@v2.1.4
-      - name: Instalação das dependências do Node.js
-        run: npm run simple_build
-      - name: Standard Lint
-        run: "npm run lint:fix"
+    - name: Project checkout
+      uses: actions/checkout@v2
+    - name: Node.js Setup
+      uses: actions/setup-node@v2.1.4
+    - name: Instalação das dependências do Node.js
+      run: npm run simple_build
+    - name: Standard Lint
+      run: npm run lint:fix
+
   testes-de-contrato:
+
     runs-on: ubuntu-18.04
+
     strategy:
       matrix:
-        node:
-          - 10
+        node: [10]
+
     steps:
-      - name: Project checkout
-        uses: actions/checkout@v2
-      - name: "Node.js v${{ matrix.node }} Setup"
-        uses: actions/setup-node@v2.1.4
-        with:
-          node-version: "${{ matrix.node }}"
-      - name: Instalação das dependências do Node.js
-        run: npm run simple_build
-      - name: Testes de contrato
-    env:
-      APP_URL: "${{ secrets.APP_URL }}"
-    run: "npm run test:contracts"
+    - name: Project checkout
+      uses: actions/checkout@v2
+    - name: Node.js v${{ matrix.node }} Setup
+      uses: actions/setup-node@v2.1.4
+      with:
+        node-version: ${{ matrix.node }}
+    - name: Instalação das dependências do Node.js
+      run: npm run simple_build
+    - name: Testes de contrato
+      run: npm run test:contracts
+
   testes-de-integracao:
+
     runs-on: ubuntu-18.04
+
     strategy:
       matrix:
-        node:
-          - 10
+        node: [10]
+
     steps:
-      - name: Project checkout
-        uses: actions/checkout@v2
-      - name: "Node.js v${{ matrix.node }} Setup"
-        uses: actions/setup-node@v2.1.4
-        with:
-          node-version: "${{ matrix.node }}"
-      - name: Instalação das dependências do Node.js
-        run: npm run simple_build
-      - name: Testes de integração
-    env:
-      APP_URL: "${{ secrets.APP_URL }}"
-      EMAIL: "${{ secrets.EMAIL }}"
-      PASSWORD: "${{ secrets.PASSWORD }}"
-    run: "npm run test:integrations"
+    - name: Project checkout
+      uses: actions/checkout@v2
+    - name: Node.js v${{ matrix.node }} Setup
+      uses: actions/setup-node@v2.1.4
+      with:
+        node-version: ${{ matrix.node }}
+    - name: Instalação das dependências do Node.js
+      run: npm run simple_build
+    - name: Testes de integração
+      run: npm run test:integrations
