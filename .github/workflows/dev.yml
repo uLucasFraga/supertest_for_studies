@@ -40,7 +40,7 @@ jobs:
       - name: Testes de contrato
         run: npm run test:contracts
         env:
-          url: ${{secrets.APP_URL}}
+          url: ${{ secrets.APP_URL }}
           CI: true
 
   testes-de-integracao:
@@ -57,12 +57,12 @@ jobs:
         uses: actions/setup-node@v2.1.4
         with:
           node-version: ${{ matrix.node }}
-          email: ${{ secrets.EMAIL }}
-          password: ${{ secrets.PASSWORD }}
       - name: Instalação das dependências do Node.js
         run: npm run simple_build
       - name: Testes de integração
         run: npm run test:integrations
         env:
           url: ${{ secrets.APP_URL }}
+          email: ${{ secrets.EMAIL }}
+          password: ${{ secrets.PASSWORD }}
           CI: true
